@@ -27,7 +27,7 @@ function comments(state = [], action) {
     case DISLIKE_COMMENT:
       return state.map(comment => {
         if (comment.id === action.id) {
-          return {...comment, likes: comment.thumb - 1}
+          return {...comment, thumb: comment.thumb - 1}
         }
         return comment;
       });
