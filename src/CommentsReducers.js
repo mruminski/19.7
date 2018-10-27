@@ -9,9 +9,7 @@ function comments(state = [], action) {
         thumb: 0
       }, ...state];
     case REMOVE_COMMENT:
-      return [{
-        comments: state.filter(comment => comment.id !== action.id)
-      }];
+      return state.filter(comment => comment.id !== action.id);
     case EDIT_COMMENT:
       return [{
         id: comments.id,
