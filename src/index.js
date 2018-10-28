@@ -9,13 +9,16 @@ import {combineReducers} from 'redux';
 import {createComment} from './actions';
 import comments from './CommentsReducers';
 import users from './UsersReducers';
+import DevTools from './DevTools';
 
 const reducer = combineReducers({
   comments,
   users
 });
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  DevTools.instrument());
 
 ReactDOM.render(
   <Provider store={store}>
