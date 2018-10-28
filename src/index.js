@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore} from 'redux';
 import {combineReducers} from 'redux';
 import {createComment} from './actions';
 import comments from './CommentsReducers';
 import users from './UsersReducers';
-import {createLogger} from 'redux-logger';
+import DevTools from './DevTools';
 
-const logger = createLogger();
 const reducer = combineReducers({
   comments,
   users
@@ -19,7 +18,7 @@ const reducer = combineReducers({
 
 const store = createStore(
   reducer,
-  applyMiddleware(logger));
+  DevTools.instrument());
 
 ReactDOM.render(
   <Provider store={store}>
